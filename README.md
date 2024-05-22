@@ -2,6 +2,8 @@
 
 Twilio Forecast is a Python application that sends weather forecasts via Whatsapp using the Twilio API. This project demonstrates how to integrate weather data with Twilio to automate Whatsapp notifications.
 
+![Twilio Forecast Architecture](img/first_diagram_de.png)
+
 ## Features
 
 - Fetches weather forecasts from a weather API
