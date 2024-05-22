@@ -1,32 +1,20 @@
-"""Envio de mensajes Twilio con Python"""
-import os
-from twilio.rest import Client
-from twilio_config import TWILIO_ACCOUNT_SID,TWILIO_AUTH_TOKEN,PHONE_NUMBER,API_KEY_WAPI
-import time
-from requests import Request, Session
-from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
-import json
-import pandas as pd
-import requests
-from tqdm import tqdm
-from datetime import datetime
-from utils import request_wapi,get_forecast,create_df,send_message,get_date
+from twilio_config import *
+from utils import get_date, request_wapi, get_forecast, create_df, send_message
 
-query = 'Cucuta'
-api_key = API_KEY_WAPI
+def main():
+    query = 'Bogota'
+    api_key = API_KEY_WAPI
 
-input_date, format_date = get_date()
-response = request_wapi(api_key,query)
+    input_date, format_date = get_date()
+    response = request_wapi(api_key, query)
 
-datos = []
+    if response:
+        data = [get_forecast(response, i) for i in range(24)]
+        df_rain = create_df(data)
+        message_id = send_message(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, format_date, df_rain, query)
+        print(f'Message sent successfully with ID: {message_id}')
+    else:
+        print("Failed to retrieve weather data")
 
-for i in tqdm(range(24),colour = 'green'):
-
-    datos.append(get_forecast(response,i))
-
-
-df_rain = create_df(datos)
-
-message_id = send_message(TWILIO_ACCOUNT_SID,TWILIO_AUTH_TOKEN,format_date,df_rain,query)
-
-print('Mensaje Enviado con exito ' + message_id)
+if __name__ == "__main__":
+    main()
