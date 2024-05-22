@@ -20,7 +20,7 @@ Twilio Forecast is a Python application that sends weather forecasts via Whatsap
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/alcarrillop/twilio_forecast.git
+    git clone https://github.com/alcarrillop/twilio-forecast.git
     cd twilio_forecast
     ```
 
@@ -70,8 +70,8 @@ python twilio_script.py
 
 4. **Clone the repository on the EC2 instance**:
     ```sh
-    git clone https://github.com/alcarrillop/twilio_forecast.git
-    cd twilio_forecast
+    git clone https://github.com/alcarrillop/twilio-forecast.git
+    cd twilio-forecast
     ```
 
 5. **Install Python packages**:
@@ -92,7 +92,7 @@ python twilio_script.py
 2. **Add a cron job to run the script daily**:
     Add the following line to schedule the script to run every day at 7 AM:
     ```sh
-    0 7 * * * /usr/bin/python3 /home/ec2-user/twilio_forecast/main.py
+    0 7 * * * /usr/bin/python3 /home/ec2-user/twilio-forecast/twilio_script.py
     ```
 
 3. **Save and exit the editor**.
