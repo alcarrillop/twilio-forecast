@@ -21,7 +21,7 @@ Twilio Forecast is a Python application that sends weather forecasts via Whatsap
 1. Clone the repository:
     ```sh
     git clone https://github.com/alcarrillop/twilio-forecast.git
-    cd twilio_forecast
+    cd twilio-forecast
     ```
 
 2. Install the required packages:
